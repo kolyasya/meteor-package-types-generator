@@ -7,7 +7,13 @@ Generates types for all exposed Meteor package files
 
 import { meteorPackageTypesGenerator } from 'meteor-package-types-generator';
 
-meteorPackageTypesGenerator.run({
+import { fileURLToPath } from 'url';
+import path from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+await meteorPackageTypesGenerator.run({
   tsInput: ['./client/index.ts', './server/index.ts', './common/index.ts'],
   declarationInput: path.join(__dirname, 'generated-types', 'index.d.ts'),
   declarationOutput: path.join(
@@ -15,6 +21,7 @@ meteorPackageTypesGenerator.run({
     'generated-types',
     'index-prefixed.d.ts'
   ),
-  prefix: 'meteor/my-package/',
+  prefix: 'meteor/my-package-name/',
 });
+
 ```

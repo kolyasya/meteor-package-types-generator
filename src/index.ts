@@ -15,12 +15,18 @@ const execPromise = (command) => {
 };
 
 export const meteorPackageTypesGenerator = {
-  run: async ({ tsInput, declarationInput, declarationOutput, prefix }) => {
+  run: async ({
+    tsInput,
+    declarationInput,
+    declarationOutput,
+    prefix,
+    tscCliParams = '--emitDeclarationOnly --declaration --declarationMap',
+  }) => {
     try {
       await execPromise(
         `npx tsc ${tsInput.join(
           ' '
-        )} --outFile ${declarationInput} --emitDeclarationOnly --declaration --declarationMap --skipDefaultLibCheck --target "es2018" --module "nodenext" --moduleResolution "nodenext" --esModuleInterop `
+        )} --outFile ${declarationInput} ${tscCliParams}`
       );
     } catch (error) {
       console.log(error?.stderr);
@@ -46,4 +52,3 @@ export const meteorPackageTypesGenerator = {
     );
   },
 };
-

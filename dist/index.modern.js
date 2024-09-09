@@ -21,10 +21,11 @@ const meteorPackageTypesGenerator = {
     tsInput,
     declarationInput,
     declarationOutput,
-    prefix
+    prefix,
+    tscCliParams: _tscCliParams = '--emitDeclarationOnly --declaration --declarationMap'
   }) => {
     try {
-      await execPromise(`npx tsc ${tsInput.join(' ')} --outFile ${declarationInput} --emitDeclarationOnly --declaration --declarationMap --skipDefaultLibCheck --target "es2018" --module "nodenext" --moduleResolution "nodenext" --esModuleInterop `);
+      await execPromise(`npx tsc ${tsInput.join(' ')} --outFile ${declarationInput} ${_tscCliParams}`);
     } catch (error) {
       console.log(error == null ? void 0 : error.stderr);
       console.log(error == null ? void 0 : error.stdout);

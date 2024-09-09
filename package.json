@@ -1,0 +1,33 @@
+{
+  "name": "meteor-package-types-generator",
+  "version": "0.0.1-beta.1",
+  "description": "Generate d.ts files for multiple inputs in Meteor packages",
+  "author": "Nikolay",
+  "license": "ISC",
+  "keywords": [
+    "meteor",
+    "packages",
+    "typescript"
+  ],
+  "bugs": {
+    "url": "https://github.com/kolyasya/meteor-package-types-generator/issues"
+  },
+  "homepage": "https://github.com/kolyasya/meteor-package-types-generator#readme",
+  "type": "module",
+  "source": "src/index.ts",
+  "exports": {
+    "require": "./dist/index.cjs",
+    "default": "./dist/index.modern.js"
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.module.js",
+  "unpkg": "./dist/index.umd.js",
+  "scripts": {
+    "build": "microbundle --target node",
+    "dev": "microbundle watch"
+  },
+  "devDependencies": {
+    "@types/node": "^22.5.4",
+    "microbundle": "^0.15.1"
+  }
+}
